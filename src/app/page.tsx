@@ -3,7 +3,11 @@
 import React, { useState, ChangeEvent, useEffect } from 'react';
 import TodoList from './components/TodoList';
 import styles from './page.module.css';
-
+import TodoForm from './components/TodoForm';
+type FormData = {
+  description: string;
+  title: string;
+};
 export default function Home() {
   const [todoList, setTodoList] = useState([
     {
@@ -41,8 +45,16 @@ export default function Home() {
     console.log(todoList); // Log the updated todoList
   }, [todoList]);
 
+  const handleSubmit = (data: FormData) => {
+    setTodoList([
+      ...todoList,
+      { ...data, id: todoList.length + 1, isDone: false },
+    ]);
+  };
+
   return (
     <main className={styles.main}>
+      <TodoForm onSubmit={handleSubmit} />
       <TodoList
         todoList={todoList}
         onSelect={handleSelect}

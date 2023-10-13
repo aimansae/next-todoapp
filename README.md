@@ -50,3 +50,11 @@ npm install react-bootstrap bootstrap
 
 For react Icons:
 4. npm install react-icons --save
+
+
+For Form validation:
+     npm install zod
+
+React hook form:
+npm i react-hook-form
+npm i @hookform/resolvers

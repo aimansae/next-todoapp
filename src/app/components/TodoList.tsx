@@ -39,6 +39,7 @@ const TodoList = ({ todoList, onDelete, onEdit, onSelect }: TodoListProps) => {
                 onChange={() => onSelect(todo.id)}
               />
             </td>
+
             <td>{todo.title}</td>
             <td>{todo.description}</td>
             <td>
