@@ -1,7 +1,7 @@
-import Table from 'react-bootstrap/Table';
 import { BiEdit } from 'react-icons/bi';
 import { AiOutlineDelete } from 'react-icons/ai';
-import React, { ChangeEvent } from 'react';
+import React from 'react';
+import * as Styled from './TodoList.styled';
 
 type Task = {
   id: number;
@@ -13,45 +13,67 @@ type Task = {
 type TodoListProps = {
   todoList: Task[];
   onDelete: (id: number) => void;
-  onEdit: () => void;
+  onEdit: (id: number) => void;
   onSelect: (id: number) => void;
 };
 
 const TodoList = ({ todoList, onDelete, onEdit, onSelect }: TodoListProps) => {
-  return (
-    <Table striped hover className="m-3">
-      <thead>
-        <tr>
-          <th></th>
-          <th>Task Name</th>
-          <th>Task Description</th>
-          <th>Actions:</th>
-        </tr>
-      </thead>
-      <tbody>
-        {todoList.map((todo) => (
-          <tr key={todo.id}>
-            <td>
-              <input
-                type="checkbox"
-                value={todo.id}
-                checked={todo.isDone}
-                onChange={() => onSelect(todo.id)}
-              />
-            </td>
+  if (todoList.length === 0) {
+    return <Styled.Alert>No tasks yet. Add them now!</Styled.Alert>;
+  }
 
-            <td>{todo.title}</td>
-            <td>{todo.description}</td>
-            <td>
-              <BiEdit onClick={() => onEdit}>Edit</BiEdit>
-              <AiOutlineDelete onClick={() => onDelete(todo.id)}>
-                Delete
-              </AiOutlineDelete>
-            </td>
-          </tr>
+  return (
+    <Styled.ListContainer>
+      <Styled.TaskContainer>
+        {todoList.map((todo) => (
+          <>
+            {' '}
+            <div className="header">
+              <div key={todo.id} className="titleCheckbox">
+                <input
+                  className="customCheckbox"
+                  type="checkbox"
+                  value={todo.id}
+                  checked={todo.isDone}
+                  onChange={() => onSelect(todo.id)}
+                />
+
+                <div
+                  className={`${
+                    todo.isDone ? 'textStriked' : 'textNormal'
+                  } titleContainer`}
+                >
+                  {todo.title}
+                </div>
+              </div>
+
+              <div className="iconContainer">
+                <BiEdit
+                  className="editIconStyling"
+                  onClick={() => onEdit(todo.id)}
+                >
+                  Edit
+                </BiEdit>
+                <AiOutlineDelete
+                  className="deleteIconStyling"
+                  onClick={() => onDelete(todo.id)}
+                >
+                  Delete
+                </AiOutlineDelete>
+              </div>
+            </div>
+            <div
+              key={todo.id}
+              className={`${
+                todo.isDone ? 'textStriked' : 'textNormal'
+              } descriptionContainer`}
+            >
+              {todo.description}
+            </div>
+          </>
         ))}
-      </tbody>
-    </Table>
+      </Styled.TaskContainer>
+    </Styled.ListContainer>
   );
 };
 
