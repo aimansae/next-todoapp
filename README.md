@@ -54,4 +54,4 @@ React hook form:
 npm i react-hook-form
 npm i @hookform/resolvers
 
-The project is deployed using 
+The project is deployed using [Netlify](https://app.netlify.com/), you can find the link [here]() 
