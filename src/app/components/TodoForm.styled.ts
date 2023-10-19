@@ -33,9 +33,8 @@ export const InputContainer = styled.div`
       outline: none;
       box-shadow: 1px 1px 9px #fff;
     }
-
   }
-  
+
   .editActive {
     border: 2px solid #ff000057;
     box-shadow: 1px 1px 9px #ff000057;
