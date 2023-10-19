@@ -1,7 +1,7 @@
-import { BiEdit } from 'react-icons/bi';
-import { AiOutlineDelete } from 'react-icons/ai';
-import React from 'react';
-import * as Styled from './TodoList.styled';
+import { BiEdit } from "react-icons/bi";
+import { AiOutlineDelete } from "react-icons/ai";
+import React from "react";
+import * as Styled from "./TodoList.styled";
 
 type Task = {
   id: number;
@@ -27,7 +27,7 @@ const TodoList = ({ todoList, onDelete, onEdit, onSelect }: TodoListProps) => {
       <Styled.TaskContainer>
         {todoList.map((todo) => (
           <>
-            {' '}
+            {" "}
             <div className="header">
               <div key={todo.id} className="titleCheckbox">
                 <input
@@ -40,7 +40,7 @@ const TodoList = ({ todoList, onDelete, onEdit, onSelect }: TodoListProps) => {
 
                 <div
                   className={`${
-                    todo.isDone ? 'textStriked' : 'textNormal'
+                    todo.isDone ? "textStriked" : "textNormal"
                   } titleContainer`}
                 >
                   {todo.title}
@@ -65,7 +65,7 @@ const TodoList = ({ todoList, onDelete, onEdit, onSelect }: TodoListProps) => {
             <div
               key={todo.id}
               className={`${
-                todo.isDone ? 'textStriked' : 'textNormal'
+                todo.isDone ? "textStriked" : "textNormal"
               } descriptionContainer`}
             >
               {todo.description}

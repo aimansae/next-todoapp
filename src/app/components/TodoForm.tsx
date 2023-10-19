@@ -1,15 +1,15 @@
 /* eslint-disable no-unused-vars */
 
-import { z } from 'zod';
-import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import * as Styled from './TodoForm.styled';
-import { TodoItem } from '../page';
-import { AiFillPlusSquare } from 'react-icons/ai';
+import { z } from "zod";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import * as Styled from "./TodoForm.styled";
+import { TodoItem } from "../page";
+import { AiFillPlusSquare } from "react-icons/ai";
 
 const schema = z.object({
-  title: z.string().min(3, { message: 'Min 3 characters required' }),
-  description: z.string().min(3, { message: 'Min 3 characters required' }),
+  title: z.string().min(3, { message: "Min 3 characters required" }),
+  description: z.string().min(3, { message: "Min 3 characters required" }),
 });
 
 export type InputFormData = z.infer<typeof schema>;
@@ -37,24 +37,24 @@ const TodoForm = ({ onSubmit, editingTodo }: Props) => {
         <Styled.InputContainer>
           <label className="label">Task:</label>
           <input
-            {...register('title')}
+            {...register("title")}
             name="title"
             type="text"
             placeholder="Enter task name..."
-            defaultValue={editingTodo?.title || ''}
-            className={editingTodo ? 'editActive' : 'normal'}
+            defaultValue={editingTodo?.title || ""}
+            className={editingTodo ? "editActive" : "normal"}
           />
 
           {errors.title && <p className="errors">{errors.title.message}</p>}
 
           <label className="label">Description:</label>
           <input
-            {...register('description')}
+            {...register("description")}
             name="description"
             type="text"
             placeholder="Describe the task..."
-            defaultValue={editingTodo?.description || ''}
-            className={editingTodo ? 'editActive' : 'normal'}
+            defaultValue={editingTodo?.description || ""}
+            className={editingTodo ? "editActive" : "normal"}
           />
           {errors.description && (
             <p className="errors">{errors.description.message}</p>
@@ -63,7 +63,7 @@ const TodoForm = ({ onSubmit, editingTodo }: Props) => {
           <Styled.ButtonDiv>
             <Styled.Button type="submit">
               <AiFillPlusSquare className="plusIcon" />
-              {editingTodo ? 'Update' : 'Add'}
+              {editingTodo ? "Update" : "Add"}
             </Styled.Button>
           </Styled.ButtonDiv>
         </Styled.InputContainer>

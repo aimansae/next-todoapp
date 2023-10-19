@@ -1,9 +1,9 @@
-'use client';
+"use client";
 
-import React, { useState, useEffect } from 'react';
-import TodoList from './components/TodoList';
-import TodoForm from './components/TodoForm';
-import Styles from './page.module.css';
+import React, { useState, useEffect } from "react";
+import TodoList from "./components/TodoList";
+import TodoForm from "./components/TodoForm";
+import Styles from "./page.module.css";
 
 export type TodoItem = {
   id: number;
@@ -18,7 +18,7 @@ type FormData = {
 };
 
 const todoListFromLocalStorage = JSON.parse(
-  localStorage.getItem('todoList') || '[]',
+  localStorage.getItem("todoList") || "[]",
 );
 
 export default function Home() {
@@ -55,9 +55,9 @@ export default function Home() {
   };
 
   useEffect(() => {
-    console.log(todoList, 'Localcheck');
+    console.log(todoList, "Localcheck");
     // Log the updated todoList
-    localStorage.setItem('todoList', JSON.stringify(todoList));
+    localStorage.setItem("todoList", JSON.stringify(todoList));
   }, [todoList]);
 
   const handleSubmit = (data: FormData) => {
