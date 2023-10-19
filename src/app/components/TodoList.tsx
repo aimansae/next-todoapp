@@ -28,11 +28,11 @@ const TodoList = ({ todoList, onDelete, onEdit, onSelect }: TodoListProps) => {
         {todoList.map((todo) => (
           <>
             {' '}
-            <div className='header'>
-              <div key={todo.id} className='titleCheckbox'>
+            <div className="header">
+              <div key={todo.id} className="titleCheckbox">
                 <input
-                  className='customCheckbox'
-                  type='checkbox'
+                  className="customCheckbox"
+                  type="checkbox"
                   value={todo.id}
                   checked={todo.isDone}
                   onChange={() => onSelect(todo.id)}
@@ -47,15 +47,15 @@ const TodoList = ({ todoList, onDelete, onEdit, onSelect }: TodoListProps) => {
                 </div>
               </div>
 
-              <div className='iconContainer'>
+              <div className="iconContainer">
                 <BiEdit
-                  className='editIconStyling'
+                  className="editIconStyling"
                   onClick={() => onEdit(todo.id)}
                 >
                   Edit
                 </BiEdit>
                 <AiOutlineDelete
-                  className='deleteIconStyling'
+                  className="deleteIconStyling"
                   onClick={() => onDelete(todo.id)}
                 >
                   Delete
