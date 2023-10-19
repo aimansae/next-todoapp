@@ -1,4 +1,4 @@
-This is a [Next.js](https://nextjs.org/)  and Typescript simple todo App.
+This is a [Next.js](https://nextjs.org/) and Typescript simple todo App.
 
 Forms are fully validated, and the project is fully responsinve, thanks to Emotion Js styled component conventions.
 
@@ -29,7 +29,6 @@ To learn more about Next.js, take a look at the following resources:
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
-
 ## Project setup:
 
 1. Create Next App
@@ -41,17 +40,15 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 npm i --save-dev prettier eslint
 
 3. Install bootstrap
-npm install react-bootstrap bootstrap
+   npm install react-bootstrap bootstrap
 
-For react Icons:
-4. npm install react-icons --save
-
+For react Icons: 4. npm install react-icons --save
 
 For Form validation:
-     npm install zod
+npm install zod
 
 React hook form:
 npm i react-hook-form
 npm i @hookform/resolvers
 
-The project is deployed using [Netlify](https://app.netlify.com/), you can find the link [here]() 
+The project is deployed using [Netlify](https://app.netlify.com/), you can find the link [here]()
