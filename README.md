@@ -52,3 +52,7 @@ npm i react-hook-form
 npm i @hookform/resolvers
 
 The project is deployed using [Netlify](https://app.netlify.com/), you can find the link [here]()
+
+Netlify plug in download:
+- first creat netlify.toml file
+then run npm i @netlify/plugin-nextjs@4.36.1 version
