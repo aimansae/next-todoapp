@@ -5,7 +5,6 @@ import TodoList from "./components/TodoList";
 import TodoForm from "./components/TodoForm";
 import Styles from "./page.module.css";
 
-
 export type TodoItem = {
   id: number;
   title: string;
@@ -13,26 +12,28 @@ export type TodoItem = {
   isDone: boolean;
 };
 
-let todoListFromLocalStorage:TodoItem[] = [];
+let todoListFromLocalStorage: TodoItem[] = [];
 
 type FormData = {
   description: string;
   title: string;
 };
 
-if (typeof window! =='undefined'){
-todoListFromLocalStorage = JSON.parse(
-  localStorage.getItem("todoList") || "[]",
-);
+if (typeof window! == "undefined") {
+  todoListFromLocalStorage = JSON.parse(
+    localStorage.getItem("todoList") || "[]",
+  );
 }
 export default function Home() {
-  const [todoList, setTodoList] = useState(todoListFromLocalStorage);
+  const [todoList, setTodoList] = useState<TodoItem[]>(
+    todoListFromLocalStorage,
+  );
 
   const [editingTodo, setEditingTodo] = useState<TodoItem | null>(null);
 
   const handleSelect = (id: number) => {
     setTodoList(
-      todoList.map((todo: { id: number; isDone: boolean }) =>
+      todoList.map((todo) =>
         todo.id === id ? { ...todo, isDone: !todo.isDone } : todo,
       ),
     );
