@@ -5,6 +5,7 @@ import TodoList from "./components/TodoList";
 import TodoForm from "./components/TodoForm";
 import Styles from "./page.module.css";
 
+
 export type TodoItem = {
   id: number;
   title: string;
@@ -12,15 +13,18 @@ export type TodoItem = {
   isDone: boolean;
 };
 
+let todoListFromLocalStorage:TodoItem[] = [];
+
 type FormData = {
   description: string;
   title: string;
 };
 
-const todoListFromLocalStorage = JSON.parse(
+if (typeof window! =='undefined'){
+todoListFromLocalStorage = JSON.parse(
   localStorage.getItem("todoList") || "[]",
 );
-
+}
 export default function Home() {
   const [todoList, setTodoList] = useState(todoListFromLocalStorage);
 
