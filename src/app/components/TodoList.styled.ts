@@ -64,6 +64,10 @@ export const IconContainer = styled.div`
   }
 `;
 
+export const Title = styled.div`
+  font-weight: bolder;
+`;
+
 export const Description = styled.div`
   margin-bottom: 2rem;
   font-style: italic;

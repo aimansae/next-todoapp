@@ -31,7 +31,8 @@ const TodoForm = ({ onSubmit, editingTodo }: Props) => {
     <>
       <Styled.Form
         onSubmit={handleSubmit((data) => {
-          onSubmit(data), reset();
+          onSubmit(data), 
+          reset();
         })}
       >
         <Styled.InputContainer>

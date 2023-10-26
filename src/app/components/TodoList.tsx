@@ -36,9 +36,9 @@ const TodoList = ({ todoList, onDelete, onEdit, onSelect }: TodoListProps) => {
                   onChange={() => onSelect(todo.id)}
                 />
 
-                <div className={todo.isDone ? "textStriked" : "textNormal"}>
+                <Styled.Title className={todo.isDone ? "textStriked" : "textNormal"}>
                   {todo.title}
-                </div>
+                </Styled.Title>
               </Styled.TitleCheckbox>
 
               <Styled.IconContainer>
@@ -46,13 +46,11 @@ const TodoList = ({ todoList, onDelete, onEdit, onSelect }: TodoListProps) => {
                   className="editIconStyling"
                   onClick={() => onEdit(todo.id)}
                 >
-                  Edit
                 </BiEdit>
                 <AiOutlineDelete
                   className="deleteIconStyling"
                   onClick={() => onDelete(todo.id)}
                 >
-                  Delete
                 </AiOutlineDelete>
               </Styled.IconContainer>
             </Styled.Header>
