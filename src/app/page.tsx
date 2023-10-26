@@ -22,7 +22,7 @@ type FormData = {
 
 
 export default function Home() {
-  const [todoList, setTodoList] = useLocalStorage<TodoItem[]>("todoList", [] as TodoItem[])
+  const [todoList, setTodoList] = useLocalStorage<TodoItem[]>("todoList", [])
 
   const [editingTodo, setEditingTodo] = useState<TodoItem | null>(null);
 

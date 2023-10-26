@@ -1,7 +1,9 @@
+'use client'
+
 import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
-import "./globals.css";
-
+import { Global } from "@emotion/react";
+import {global} from './globals'
 const roboto = Roboto({
   weight: "400",
   subsets: ["latin"],
@@ -19,6 +21,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <Global styles={global} />
       <body className={roboto.className}>{children}</body>
     </html>
   );

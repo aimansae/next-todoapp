@@ -1,6 +1,6 @@
 import { BiEdit } from "react-icons/bi";
 import { AiOutlineDelete } from "react-icons/ai";
-import React from "react";
+import React, { Fragment } from "react";
 import * as Styled from "./TodoList.styled";
 
 type Task = {
@@ -26,8 +26,7 @@ const TodoList = ({ todoList, onDelete, onEdit, onSelect }: TodoListProps) => {
     <Styled.ListContainer>
       <Styled.TaskContainer>
         {todoList.map((todo) => (
-          <>
-            {" "}
+          <Fragment key={todo.id}>
             <Styled.Header>
               <Styled.TitleCheckbox key={todo.id}>
                 <Styled.Input
@@ -37,11 +36,7 @@ const TodoList = ({ todoList, onDelete, onEdit, onSelect }: TodoListProps) => {
                   onChange={() => onSelect(todo.id)}
                 />
 
-                <div
-                  className={
-                    todo.isDone ? "textStriked" : "textNormal"
-                  }
-                >
+                <div className={todo.isDone ? "textStriked" : "textNormal"}>
                   {todo.title}
                 </div>
               </Styled.TitleCheckbox>
@@ -62,14 +57,11 @@ const TodoList = ({ todoList, onDelete, onEdit, onSelect }: TodoListProps) => {
               </Styled.IconContainer>
             </Styled.Header>
             <Styled.Description
-              key={todo.id}
-              className={
-                todo.isDone ? "textStriked" : "textNormal"
-              }
+              className={todo.isDone ? "textStriked" : "textNormal"}
             >
               {todo.description}
             </Styled.Description>
-          </>
+          </Fragment>
         ))}
       </Styled.TaskContainer>
     </Styled.ListContainer>
