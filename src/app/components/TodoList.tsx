@@ -28,10 +28,9 @@ const TodoList = ({ todoList, onDelete, onEdit, onSelect }: TodoListProps) => {
         {todoList.map((todo) => (
           <>
             {" "}
-            <div className="header">
-              <div key={todo.id} className="titleCheckbox">
-                <input
-                  className="customCheckbox"
+            <Styled.Header>
+              <Styled.TitleCheckbox key={todo.id}>
+                <Styled.Input
                   type="checkbox"
                   value={todo.id}
                   checked={todo.isDone}
@@ -39,15 +38,15 @@ const TodoList = ({ todoList, onDelete, onEdit, onSelect }: TodoListProps) => {
                 />
 
                 <div
-                  className={`${
+                  className={
                     todo.isDone ? "textStriked" : "textNormal"
-                  } titleContainer`}
+                  }
                 >
                   {todo.title}
                 </div>
-              </div>
+              </Styled.TitleCheckbox>
 
-              <div className="iconContainer">
+              <Styled.IconContainer>
                 <BiEdit
                   className="editIconStyling"
                   onClick={() => onEdit(todo.id)}
@@ -60,16 +59,16 @@ const TodoList = ({ todoList, onDelete, onEdit, onSelect }: TodoListProps) => {
                 >
                   Delete
                 </AiOutlineDelete>
-              </div>
-            </div>
-            <div
+              </Styled.IconContainer>
+            </Styled.Header>
+            <Styled.Description
               key={todo.id}
-              className={`${
+              className={
                 todo.isDone ? "textStriked" : "textNormal"
-              } descriptionContainer`}
+              }
             >
               {todo.description}
-            </div>
+            </Styled.Description>
           </>
         ))}
       </Styled.TaskContainer>

@@ -51,6 +51,10 @@ React hook form:
 npm i react-hook-form
 npm i @hookform/resolvers
 
+Errors:
+ - Warning: Each child in a list should have a unique "key" prop.
+SOLVED: Key in render were nt direct child of map function, fixed by insertin key directly to the first child on the div
+
 The project is deployed using [Netlify](https://app.netlify.com/), you can find the link [here]()
 
 Netlify plug in download:

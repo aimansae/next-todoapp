@@ -12,12 +12,6 @@ export const InputContainer = styled.div`
   flex-direction: column;
   text-transform: italic;
 
-  .label {
-    flex: 1;
-    margin-bottom: 0.5rem;
-    text-align: left;
-  }
-
   input {
     padding: 0.55rem;
     margin-bottom: 1rem;
@@ -39,13 +33,19 @@ export const InputContainer = styled.div`
     border: 2px solid #ff000057;
     box-shadow: 1px 1px 9px #ff000057;
   }
+`;
 
-  p {
-    color: #fffc00;
-    text-transform: lowercase;
-    font-style: italic;
-    margin-bottom: 2rem;
-  }
+export const Error = styled.p`
+  color: #fffc00;
+  text-transform: lowercase;
+  font-style: italic;
+  margin-bottom: 2rem;
+`;
+
+export const Label = styled.label`
+  flex: 1;
+  margin-bottom: 0.5rem;
+  text-align: left;
 `;
 
 export const ButtonDiv = styled.div`

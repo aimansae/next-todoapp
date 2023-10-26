@@ -35,7 +35,7 @@ const TodoForm = ({ onSubmit, editingTodo }: Props) => {
         })}
       >
         <Styled.InputContainer>
-          <label className="label">Task:</label>
+          <Styled.Label>Task:</Styled.Label>
           <input
             {...register("title")}
             name="title"
@@ -45,9 +45,9 @@ const TodoForm = ({ onSubmit, editingTodo }: Props) => {
             className={editingTodo ? "editActive" : "normal"}
           />
 
-          {errors.title && <p className="errors">{errors.title.message}</p>}
+          {errors.title && <Styled.Error>{errors.title.message}</Styled.Error>}
 
-          <label className="label">Description:</label>
+          <Styled.Label>Description:</Styled.Label>
           <input
             {...register("description")}
             name="description"
@@ -57,7 +57,7 @@ const TodoForm = ({ onSubmit, editingTodo }: Props) => {
             className={editingTodo ? "editActive" : "normal"}
           />
           {errors.description && (
-            <p className="errors">{errors.description.message}</p>
+            <Styled.Error>{errors.description.message}</Styled.Error>
           )}
 
           <Styled.ButtonDiv>

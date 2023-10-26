@@ -1,7 +1,6 @@
-import "./globals.css";
 import type { Metadata } from "next";
-import "bootstrap/dist/css/bootstrap.min.css";
 import { Roboto } from "next/font/google";
+import "./globals.css";
 
 const roboto = Roboto({
   weight: "400",

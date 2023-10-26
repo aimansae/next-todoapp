@@ -3,7 +3,8 @@
 import React, { useState, useEffect } from "react";
 import TodoList from "./components/TodoList";
 import TodoForm from "./components/TodoForm";
-import Styles from "./page.module.css";
+import * as Styled from "./page.styled";
+import { useLocalStorage } from "./hooks/useLocalStorage";
 
 export type TodoItem = {
   id: number;
@@ -12,22 +13,16 @@ export type TodoItem = {
   isDone: boolean;
 };
 
-let todoListFromLocalStorage: TodoItem[] = [];
 
 type FormData = {
   description: string;
   title: string;
 };
 
-if (typeof window! == "undefined") {
-  todoListFromLocalStorage = JSON.parse(
-    localStorage.getItem("todoList") || "[]",
-  );
-}
+
+
 export default function Home() {
-  const [todoList, setTodoList] = useState<TodoItem[]>(
-    todoListFromLocalStorage,
-  );
+  const [todoList, setTodoList] = useLocalStorage<TodoItem[]>("todoList", [] as TodoItem[])
 
   const [editingTodo, setEditingTodo] = useState<TodoItem | null>(null);
 
@@ -50,18 +45,19 @@ export default function Home() {
     }
   };
 
-  const handleUpdate = (updatedTodo: TodoItem) => {
-    setTodoList((prevTodoList: any[]) =>
-      prevTodoList.map((todo) =>
-        todo.id === updatedTodo.id ? updatedTodo : todo,
-      ),
+const handleUpdate = (updatedTodo: TodoItem) => {
+  setTodoList((prevTodoList: TodoItem[]) => {
+    const updatedList = prevTodoList.map((todo) =>
+      todo.id === updatedTodo.id ? updatedTodo : todo
     );
-    setEditingTodo(null);
-  };
+    return updatedList;
+  });
+  setEditingTodo(null);
+};
 
   useEffect(() => {
     console.log(todoList, "Localcheck");
-    // Log the updated todoList
+    // // Log the updated todoList
     localStorage.setItem("todoList", JSON.stringify(todoList));
   }, [todoList]);
 
@@ -80,10 +76,10 @@ export default function Home() {
   };
   return (
     <>
-      <header className={Styles.Heading}>
+      <Styled.Header>
         <h1>My Tasks</h1>
-      </header>
-      <main className={Styles.Main}>
+      </Styled.Header>
+      <Styled.Main>
         <TodoForm onSubmit={handleSubmit} editingTodo={editingTodo} />
         <TodoList
           todoList={todoList}
@@ -91,7 +87,7 @@ export default function Home() {
           onDelete={handleDelete}
           onEdit={handleEdit}
         />
-      </main>
+      </Styled.Main>
     </>
   );
 }
