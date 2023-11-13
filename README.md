@@ -42,7 +42,7 @@ npm i --save-dev prettier eslint
 
 4. For react Icons: 4. npm install react-icons --save
 
-5. For Form validation: npm install zod
+5. For Form validation used [Zod](https://github.com/react-hook-form/resolvers#zod): npm install zod
 
 5. For React hook form:
 
@@ -50,7 +50,7 @@ npm i react-hook-form
 npm i @hookform/resolvers
 
 
-## Errors and fix:
+## Errors and fixes:
 
 1. Error:
  - Warning: Each child in a list should have a unique "key" prop.
@@ -69,8 +69,7 @@ to:
             {errors.description && errors.description.message}
           </Styled.Error>
 
-
-
+## Deployment:
 
 The project is deployed using [Netlify](https://app.netlify.com/), you can find the link [here](https://my-new-branch--splendid-travesseiro-a5947b.netlify.app/)
 
