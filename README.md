@@ -1,10 +1,10 @@
 This is a [Next.js](https://nextjs.org/) and Typescript simple todo App.
 
-Forms are fully validated, and the project is fully responsinve, thanks to Emotion Js styled component conventions.
+Forms are fully validated, and the project is fully responsinve, thanks to [Emotion Js](https://emotion.sh/docs/introduction) styled component conventions.
 
 ## Getting Started
 
-First, run the development server:
+To run the development server:
 
 ```bash
 npm run dev
@@ -17,8 +17,6 @@ bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
 ## Learn More
 
@@ -42,21 +40,40 @@ npm i --save-dev prettier eslint
 3. Install bootstrap
    npm install react-bootstrap bootstrap
 
-For react Icons: 4. npm install react-icons --save
+4. For react Icons: 4. npm install react-icons --save
 
-For Form validation:
-npm install zod
+5. For Form validation: npm install zod
 
-React hook form:
+5. For React hook form:
+
 npm i react-hook-form
 npm i @hookform/resolvers
 
-Errors:
+
+## Errors and fix:
+
+1. Error:
  - Warning: Each child in a list should have a unique "key" prop.
-SOLVED: Key in render were nt direct child of map function, fixed by insertin key directly to the first child on the div
 
-The project is deployed using [Netlify](https://app.netlify.com/), you can find the link [here]()
+SOLVED: Key in rendering were not direct child of my map function, so fixed by inserting the key directly to the first child on the div
+, this was done by using the Fragment tag
 
-Netlify plug in download:
+2. Error
+
+- after clicking on Edit icon, forms were showing the errors, fixed by removing the condition for error rendering from:
+   {!editingTodo && errors.description && (
+            <Styled.Error>{errors.description.message}</Styled.Error>
+          )}
+to: 
+<Styled.Error>
+            {errors.description && errors.description.message}
+          </Styled.Error>
+
+
+
+
+The project is deployed using [Netlify](https://app.netlify.com/), you can find the link [here](https://my-new-branch--splendid-travesseiro-a5947b.netlify.app/)
+
+Netlify plug in download step:
 - first creat netlify.toml file
 then run npm i @netlify/plugin-nextjs@4.36.1 version

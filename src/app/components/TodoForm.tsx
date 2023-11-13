@@ -25,13 +25,16 @@ const TodoForm = ({ onSubmit, editingTodo }: Props) => {
     handleSubmit,
     reset,
     formState: { errors },
-  } = useForm<InputFormData>({ resolver: zodResolver(schema) });
+  } = useForm<InputFormData>({
+    resolver: zodResolver(schema),
+    defaultValues: editingTodo || {},
+  });
 
   return (
     <>
       <Styled.Form
         onSubmit={handleSubmit((data) => {
-          onSubmit(data), 
+          onSubmit(data);
           reset();
         })}
       >
@@ -46,7 +49,7 @@ const TodoForm = ({ onSubmit, editingTodo }: Props) => {
             className={editingTodo ? "editActive" : "normal"}
           />
 
-          {!editingTodo && errors.title && <Styled.Error>{errors.title.message}</Styled.Error>}
+          <Styled.Error>{errors.title && errors.title.message}</Styled.Error>
 
           <Styled.Label>Description:</Styled.Label>
           <input
@@ -57,9 +60,9 @@ const TodoForm = ({ onSubmit, editingTodo }: Props) => {
             defaultValue={editingTodo?.description || ""}
             className={editingTodo ? "editActive" : "normal"}
           />
-          {!editingTodo && errors.description && (
-            <Styled.Error>{errors.description.message}</Styled.Error>
-          )}
+          <Styled.Error>
+            {errors.description && errors.description.message}
+          </Styled.Error>
 
           <Styled.ButtonDiv>
             <Styled.Button type="submit">

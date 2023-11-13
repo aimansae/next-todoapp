@@ -12,7 +12,7 @@ export function useLocalStorage<T>(
       setStoredValue(valueToStore);
       localStorage.setItem(key, JSON.stringify(value));
     } catch (error) {
-      console.error(error);
+      // console.error(error);
     }
   };
   useEffect(() => {
@@ -20,10 +20,10 @@ export function useLocalStorage<T>(
       const item = localStorage.getItem(key);
       if (item) {
         setStoredValue(JSON.parse(item));
-        console.log(item,'value stred')
+        // console.log(item,'value stred')
       }
     } catch (error) {
-      console.error(error);
+      // console.error(error);
     }
   }, [key]);
   return [storedValue, setValue];
