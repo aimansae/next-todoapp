@@ -23,7 +23,6 @@ type FormData = {
 
 export default function Home() {
   const [todoList, setTodoList] = useLocalStorage<TodoItem[]>("todoList", [])
-
   const [editingTodo, setEditingTodo] = useState<TodoItem | null>(null);
 
   const handleSelect = (id: number) => {
@@ -46,20 +45,12 @@ export default function Home() {
   };
 
 const handleUpdate = (updatedTodo: TodoItem) => {
-  setTodoList((prevTodoList: TodoItem[]) => {
-    const updatedList = prevTodoList.map((todo) =>
-      todo.id === updatedTodo.id ? updatedTodo : todo
-    );
-    return updatedList;
-  });
+    const updatedList = todoList.map((todo) =>
+      todo.id === updatedTodo.id ?  { ...todo, ...updatedTodo } : todo
+    )
+    setTodoList(updatedList);
   setEditingTodo(null);
 };
-
-  useEffect(() => {
-    console.log(todoList, "Localcheck");
-    // // Log the updated todoList
-    localStorage.setItem("todoList", JSON.stringify(todoList));
-  }, [todoList]);
 
   const handleSubmit = (data: FormData) => {
     if (editingTodo) {
@@ -74,6 +65,7 @@ const handleUpdate = (updatedTodo: TodoItem) => {
     }
     setEditingTodo(null);
   };
+
   return (
     <>
       <Styled.Header>

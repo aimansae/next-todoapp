@@ -46,7 +46,7 @@ const TodoForm = ({ onSubmit, editingTodo }: Props) => {
             className={editingTodo ? "editActive" : "normal"}
           />
 
-          {errors.title && <Styled.Error>{errors.title.message}</Styled.Error>}
+          {!editingTodo && errors.title && <Styled.Error>{errors.title.message}</Styled.Error>}
 
           <Styled.Label>Description:</Styled.Label>
           <input
@@ -57,7 +57,7 @@ const TodoForm = ({ onSubmit, editingTodo }: Props) => {
             defaultValue={editingTodo?.description || ""}
             className={editingTodo ? "editActive" : "normal"}
           />
-          {errors.description && (
+          {!editingTodo && errors.description && (
             <Styled.Error>{errors.description.message}</Styled.Error>
           )}
 
