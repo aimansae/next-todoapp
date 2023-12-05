@@ -1,10 +1,10 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React from "react";
 import TodoList from "./components/TodoList";
 import TodoForm from "./components/TodoForm";
 import * as Styled from "./page.styled";
-import { useLocalStorage } from "./hooks/useLocalStorage";
+import TodoContextProvider, { useTodoContext } from "./contexts/TodoContext";
 
 export type TodoItem = {
   id: number;
@@ -13,44 +13,43 @@ export type TodoItem = {
   isDone: boolean;
 };
 
-
 type FormData = {
   description: string;
   title: string;
 };
 
-
-
 export default function Home() {
-  const [todoList, setTodoList] = useLocalStorage<TodoItem[]>("todoList", [])
-  const [editingTodo, setEditingTodo] = useState<TodoItem | null>(null);
+  // const [todoList, setTodoList] = useLocalStorage<TodoItem[]>("todoList", [])
+  // const [editingTodo, setEditingTodo] = useState<TodoItem | null>(null);
+  const { editingTodo, setTodoList, todoList, setEditingTodo } =
+    useTodoContext();
 
-  const handleSelect = (id: number) => {
-    setTodoList(
-      todoList.map((todo) =>
-        todo.id === id ? { ...todo, isDone: !todo.isDone } : todo,
-      ),
-    );
-  };
+  // const handleSelect = (id: number) => {
+  //   setTodoList(
+  //     todoList.map((todo) =>
+  //       todo.id === id ? { ...todo, isDone: !todo.isDone } : todo,
+  //     ),
+  //   );
+  // };
 
-  const handleDelete = (id: number) => {
-    setTodoList(todoList.filter((todo: { id: number }) => todo.id !== id));
-  };
+  // const handleDelete = (id: number) => {
+  //   setTodoList(todoList.filter((todo: { id: number }) => todo.id !== id));
+  // };
 
-  const handleEdit = (id: number) => {
-    const editedTodo = todoList.find((todo: { id: number }) => todo.id === id);
-    if (editedTodo) {
-      setEditingTodo(editedTodo);
-    }
-  };
+  // const handleEdit = (id: number) => {
+  //   const editedTodo = todoList.find((todo: { id: number }) => todo.id === id);
+  //   if (editedTodo) {
+  //     setEditingTodo(editedTodo);
+  //   }
+  // };
 
-const handleUpdate = (updatedTodo: TodoItem) => {
+  const handleUpdate = (updatedTodo: TodoItem) => {
     const updatedList = todoList.map((todo) =>
-      todo.id === updatedTodo.id ?  { ...todo, ...updatedTodo } : todo
-    )
+      todo.id === updatedTodo.id ? { ...todo, ...updatedTodo } : todo,
+    );
     setTodoList(updatedList);
-  setEditingTodo(null);
-};
+    setEditingTodo(null);
+  };
 
   const handleSubmit = (data: FormData) => {
     if (editingTodo) {
@@ -65,20 +64,16 @@ const handleUpdate = (updatedTodo: TodoItem) => {
     }
     setEditingTodo(null);
   };
-
   return (
     <>
       <Styled.Header>
         <h1>My Tasks</h1>
       </Styled.Header>
       <Styled.Main>
-        <TodoForm onSubmit={handleSubmit} editingTodo={editingTodo} />
-        <TodoList
-          todoList={todoList}
-          onSelect={handleSelect}
-          onDelete={handleDelete}
-          onEdit={handleEdit}
-        />
+        <TodoContextProvider>
+          <TodoForm onSubmit={handleSubmit} editingTodo={editingTodo} />
+          <TodoList />
+        </TodoContextProvider>
       </Styled.Main>
     </>
   );

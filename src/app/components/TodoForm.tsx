@@ -6,6 +6,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import * as Styled from "./TodoForm.styled";
 import { TodoItem } from "../page";
 import { AiFillPlusSquare } from "react-icons/ai";
+import { useTodoContext } from "../contexts/TodoContext";
 
 const schema = z.object({
   title: z.string().min(3, { message: "Min 3 characters required" }),
@@ -19,7 +20,9 @@ type Props = {
   editingTodo: TodoItem | null;
 };
 
-const TodoForm = ({ onSubmit, editingTodo }: Props) => {
+const TodoForm = ({ onSubmit }: Props) => {
+  const {editingTodo } = useTodoContext();
+
   const {
     register,
     handleSubmit,
